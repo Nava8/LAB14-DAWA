@@ -1,0 +1,43 @@
+<div>
+    <h2>Filtrar películas</h2>
+    <div>
+      <label for="genero">Género:</label>
+      <select id="genero" [(ngModel)]="filtroGenero" (change)="aplicarFiltros()">
+        <option value="">Todos</option>
+        <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="anio">Año de lanzamiento:</label>
+      <input id="anio" type="number" [(ngModel)]="filtroAnioLanzamiento" (input)="aplicarFiltros()">
+    </div>
+    <button (click)="limpiarFiltros()">Limpiar filtros</button>
+  </div>
+  
+  <div>
+    <h2>Películas filtradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Género</th>
+          <th>Año de lanzamiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pelicula of peliculasFiltradas">
+          <td>{{ pelicula.titulo }}</td>
+          <td>{{ pelicula.genero }}</td>
+          <td>{{ pelicula.lanzamiento }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div>
+    <h2>Exportar informe</h2>
+    <button (click)="generarPDF()">Exportar a PDF</button>
+    <button (click)="generarExcel()">Exportar a Excel</button>
+    <button (click)="generarCSV()">Exportar a CSV</button>
+  </div>
+  
